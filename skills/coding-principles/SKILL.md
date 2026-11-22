@@ -41,6 +41,9 @@ Project conventions are not in this file. They are in the `CLAUDE.md` or `AGENTS
 
 - **No silent catch.** Never catch an error and ignore it. Do not hide an error behind a fallback value.
   Reason: the error then appears later at a different place.
+- **Catch only to handle.** If you cannot handle an error at a place, do not catch it there.
+  Let it propagate to the entry point.
+  Example: retry the call, or wrap the error in a domain error with context.
 
 ## Tests
 
