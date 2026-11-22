@@ -8,6 +8,7 @@ allowed-tools:
   - Bash(git rev-parse *)
   - Bash(git symbolic-ref *)
   - Read(~/.claude/skills/create-plan/**)
+  - Read(~/.claude/plugins/cache/nschuette/**)
 ---
 
 # Create a plan

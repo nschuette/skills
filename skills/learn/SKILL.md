@@ -8,6 +8,7 @@ allowed-tools:
   - Bash(git diff *)
   - Read(~/.claude/skills/learn/**)
   - Read(~/.claude/skills/coding-principles/**)
+  - Read(~/.claude/plugins/cache/nschuette/**)
 ---
 
 # Learn from feedback

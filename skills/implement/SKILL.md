@@ -11,6 +11,7 @@ allowed-tools:
   - Bash(git diff *)
   - Bash(git log *)
   - Read(~/.claude/skills/implement/**)
+  - Read(~/.claude/plugins/cache/nschuette/**)
 ---
 
 # Implement a plan
