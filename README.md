@@ -15,7 +15,33 @@ This is my personal setup. You can use it, but I do not give support.
 
 ## Install
 
-Requirements: git and at least one of Claude Code, Cursor or the Codex app, on macOS or Linux.
+Choose one way for each agent.
+In Claude Code, do not use the plugin and `install.sh` together, because then each skill shows two times.
+
+### Claude Code plugin (macOS, Linux, Windows)
+
+Requirements: Claude Code.
+
+In Claude Code, run these commands:
+
+```
+/plugin marketplace add nschuette/skills
+/plugin install nschuette-skills@nschuette
+```
+
+In a terminal, run `claude plugin marketplace add nschuette/skills` and `claude plugin install nschuette-skills@nschuette`.
+
+The plugin adds its name to each skill. Run `/nschuette-skills:create-plan` instead of `/create-plan`.
+
+Claude Code does not update this plugin automatically.
+To update it, run `claude plugin marketplace update nschuette` and `claude plugin update nschuette-skills@nschuette`.
+To get automatic updates, run `/plugin`, open the marketplace `nschuette` and turn on auto-update.
+
+Then add the [recommended settings](#recommended-settings).
+
+### install.sh (macOS, Linux)
+
+Requirements: git and at least one of Claude Code, Cursor or the Codex app.
 
 ```bash
 # Get the repository
@@ -40,6 +66,14 @@ Each agent reads these folders:
 - Codex app: `~/.agents/skills/`.
 
 Then add the [recommended settings](#recommended-settings).
+
+### Manual copy (Codex app, Cursor, Windows)
+
+1. Get the repository with `git clone https://github.com/nschuette/skills.git`, or download it as a ZIP file from GitHub.
+2. Copy each folder in `skills/` into `~/.agents/skills/`. On Windows, this folder is `%USERPROFILE%\.agents\skills\`.
+3. After a change in the repository, copy the folders again.
+
+The Codex app and Cursor read `~/.agents/skills/`.
 
 ## Usage
 
@@ -108,19 +142,34 @@ Add this to `~/.claude/settings.json`:
 ```json
 {
   "permissions": {
-    "allow": ["Read(~/.claude/skills/**)"],
+    "allow": [
+      "Read(~/.claude/skills/**)",
+      "Read(~/.claude/plugins/cache/nschuette/**)"
+    ],
     "ask": ["Bash(git push *)"]
   }
 }
 ```
 
 - `allow`: the agent can read the files of a skill without a prompt. The `allowed-tools` of a skill are not sufficient, because they apply only in the first turn.
+  The first rule is for `install.sh`. The second rule is for the plugin.
 - `ask`: the agent asks before each push. Reason: `implement` commits by itself from level 2. The push is the step that makes the work visible to others.
 
 ## Known limitations
 
 - Only Claude Code replaces `$ARGUMENTS`. The other agents take the task from the message.
-- Cloud agents are not supported. The skills are only on the local computer.
+- Cloud sessions of Claude Code do not load plugins from the `.claude/settings.json` of a repository.
+  Reason: the plugins need the trust dialog, and a cloud session does not show it.
+  To get the skills in a cloud session, add these lines to the setup script of the cloud environment. I did not test this.
+
+  ```bash
+  git clone --depth 1 https://github.com/nschuette/skills.git /tmp/nschuette-skills
+  /tmp/nschuette-skills/install.sh
+  ```
+
+- With the plugin, `learn` asks for the path of a clone of this repository. Reason: Claude Code installs a copy of the plugin.
+  `learn` writes a rule for `coding-principles` only into the clone. Then push the change and update the plugin.
+- The skills tell you to run `/create-plan` or `/implement`. With the plugin, add the prefix `nschuette-skills:`.
 - `install.sh` copies the skills and does not link them. Reason: Claude Code checks a `Read` rule against the real path of a file. A rule for `~/.claude/skills/` does not match a file in a symlinked folder. See [anthropics/claude-code#106433](https://github.com/anthropics/claude-code/issues/106433).
 
 ## Conventions
