@@ -60,6 +60,7 @@ Reason: a rule in the wrong place either applies in projects where it is wrong, 
 2. Write the rule into the target file.
 3. Do not commit. Reason: the user reviews and commits the change.
 4. If the target is `coding-principles`, tell the user to commit the change in the skills repository and to run its `install.sh`.
+   If the skill folder is in `~/.claude/plugins/cache/`, tell the user to push the change and update the plugin instead of `install.sh`.
 
 ## Guidelines
 

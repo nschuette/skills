@@ -33,7 +33,8 @@ Find the source file. Do not change the installed copy. Reason: `install.sh` rep
 1. Read `.installed-by-skills-repo` in the installed skill folder, for example `~/.claude/skills/coding-principles/`.
    The file contains the path of the skills repository.
 2. The source file is `<skills repository>/skills/coding-principles/SKILL.md`.
-3. If the marker file or the source file does not exist, show the rule to the user. Do not write it.
+3. If the skill folder is in `~/.claude/plugins/cache/`, there is no marker file. Ask the user for the path of the skills repository.
+4. If there is no path or no source file, show the rule to the user. Do not write it.
 
 Add the rule to the section that fits. Give it a short name in bold, like the other rules.
 
