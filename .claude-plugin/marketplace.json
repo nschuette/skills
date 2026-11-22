@@ -1,0 +1,15 @@
+{
+  "name": "nschuette",
+  "description": "Personal skills for AI coding agents.",
+  "owner": {
+    "name": "Nicolai Schütte",
+    "url": "https://github.com/nschuette"
+  },
+  "plugins": [
+    {
+      "name": "nschuette-skills",
+      "source": "./",
+      "description": "Skills to plan, implement and review code, and to turn feedback into rules."
+    }
+  ]
+}

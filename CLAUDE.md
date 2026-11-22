@@ -10,6 +10,7 @@ Personal skills for AI coding agents. It supports Claude Code, Cursor and the Co
   - `references/`: documentation that the agent reads only when necessary.
   - `scripts/`: code that the agent runs.
   - `agents/openai.yaml`: Codex settings, for example the invocation policy.
+- `.claude-plugin/`: the marketplace `nschuette` with the Claude Code plugin `nschuette-skills`. The plugin reads all skills from `skills/`.
 - `install.sh`: copies each skill folder into `~/.claude/skills/` and `~/.agents/skills/`. Run it again after each change.
 - `README.md`: install steps and the list of skills. Update the list when you add or remove a skill.
 
@@ -72,6 +73,16 @@ Use Conventional Commits in English.
 - Before each commit, read the added lines with `git diff --cached`.
 - Check each added line against the writing rules. If a line breaks a rule, correct it first.
   Reason: reviews found the passive voice, a condition after the instruction and synonyms in new text.
+
+## Releases
+
+Each release has a tag `vX.Y.Z` and a GitHub release.
+
+1. Before the tag, set `version` in `.claude-plugin/plugin.json` to `X.Y.Z`.
+2. Commit this change.
+3. Create the tag on this commit.
+
+Reason: Claude Code offers a plugin update only if `version` changes.
 
 ## Test a skill
 

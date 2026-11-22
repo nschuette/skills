@@ -1,0 +1,13 @@
+{
+  "name": "nschuette-skills",
+  "version": "2.2.0",
+  "description": "Skills to plan, implement and review code, and to turn feedback into rules.",
+  "author": {
+    "name": "Nicolai Schütte",
+    "url": "https://github.com/nschuette"
+  },
+  "homepage": "https://github.com/nschuette/skills",
+  "repository": "https://github.com/nschuette/skills",
+  "license": "MIT",
+  "keywords": ["planning", "implementation", "code-review"]
+}
