@@ -88,7 +88,8 @@ Example: a plan for a Jira ticket.
 4. Approve the outline. Check the level of each phase. See [Autonomy levels](#autonomy-levels).
    The agent writes the plan to `.agent-work/plans/<branch>/`. See [Work files](#work-files).
 5. Review the plan. Give feedback in the same session. The agent changes the plan file.
-6. Start a new session and run `/implement <path of the plan>`.
+6. Start a fresh context and run `/implement <path of the plan>`. The agent shows the lines to copy.
+   In Claude Code, run `/clear` first. In Cursor, open a new chat. In Codex, run `/new`, then `$implement <path of the plan>`.
    The agent implements one phase at a time and writes a report for each phase.
    The level of the phase decides if the agent stops for your approval.
 

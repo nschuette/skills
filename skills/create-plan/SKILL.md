@@ -128,7 +128,12 @@ Read the plan again and check these points. Fix each problem in the plan.
 
 1. Tell the user the path of the plan.
 2. Give a short summary: phases, important decisions and risks.
-3. Tell the user the next step: start a new session and run `/implement <path of the plan>`.
+3. Tell the user the next step in a code block, so that the user can copy it. Use the lines for the agent that you run in:
+   - Claude Code: `/clear`, then `/implement <path of the plan>`.
+   - Cursor: open a new chat, then `/implement <path of the plan>`.
+   - Codex: `/new`, then `$implement <path of the plan>`.
+
+   Reason: the implementation needs a fresh context. A skill cannot start a new session.
 4. Stop and wait for the review. Do not start the implementation. Reason: the user must approve the plan first.
 
 When the user gives feedback, change the plan file. Then show only what changed.
